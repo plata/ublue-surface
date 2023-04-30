@@ -2,21 +2,17 @@
 # If you are looking at this file in your root directory on your computer, editing it does nothing.
 
 # The image will be at ghcr.io/yourusername/name
-name: startingpoint
-
+name: ublue-surface
 # The native container image to build on top of
 # Warning: Non-uBlue images might function unexpectly
 base-image: ghcr.io/ublue-os/silverblue-main
-
 # What fedora version to use. Use an explicit version or `latest`.
 # If you use `latest`, you will be automatically updated
 # to the next major version assuming the image you're using as your base container
 # builds with the tag (all uBlue images do this).
 fedora-version: 37
-
 # This description will be visible in the container metadata
 description: A starting point for further customization of uBlue images. Make your own! https://ublue.it/making-your-own/
-
 # These scripts will be executed during the container build
 # Place scripts in scripts/ and put the corresponding filename here
 scripts:
@@ -25,8 +21,8 @@ scripts:
 # a list of urls of .repo files that should be added to your system
 # this is the proper way to add copr repos to your image
 extrarepos:
-  # example:
-  # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-37/atim-starship-fedora-37.repo
+# example:
+# - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-37/atim-starship-fedora-37.repo
 
 # These rpms will be installed from the fedora repository
 # using rpm-ostree and will be preinstalled in the final image
@@ -35,7 +31,6 @@ rpms:
   - python3-pip
   - libadwaita # libadwaita comes with silverblue, but not with other flavors
   # add your own below
-
 # These Flatpaks (from flathub) will be available for install on boot
 # this is just an example selection.
 # If you leave this empty you can use yafti for post-boot installation
