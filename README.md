@@ -1,4 +1,4 @@
-# Starting point
+# ublue-surface
 
 [![build-ublue](https://github.com/plata/ublue-surface/actions/workflows/build.yml/badge.svg)](https://github.com/plata/ublue-surface/actions/workflows/build.yml)
 
