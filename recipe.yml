@@ -37,3 +37,4 @@ rpms:
 flatpaks:
   - org.mozilla.firefox
   - org.mozilla.Thunderbird
+  - org.kde.qmlkonsole
