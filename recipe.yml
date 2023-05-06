@@ -29,8 +29,9 @@ extrarepos:
 rpms:
   # needed for yafti (the first boot installer) (remove if you're not using yafti)
   - python3-pip
-  - plasma-mobile
+  - libadwaita # libadwaita comes with silverblue, but not with other flavors
   # add your own below
+  - plasma-mobile
 # These Flatpaks (from flathub) will be available for install on boot
 # this is just an example selection.
 # If you leave this empty you can use yafti for post-boot installation
