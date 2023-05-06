@@ -29,6 +29,7 @@ extrarepos:
 rpms:
   # needed for yafti (the first boot installer) (remove if you're not using yafti)
   - python3-pip
+  - plasma-mobile
   # add your own below
 # These Flatpaks (from flathub) will be available for install on boot
 # this is just an example selection.
