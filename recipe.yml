@@ -36,5 +36,6 @@ rpms:
 # this is just an example selection.
 # If you leave this empty you can use yafti for post-boot installation
 flatpaks:
+  - org.kde.qmlkonsole
   - org.mozilla.firefox
   - org.mozilla.Thunderbird
