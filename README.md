@@ -2,7 +2,7 @@
 
 [![build-ublue](https://github.com/plata/ublue-surface/actions/workflows/build.yml/badge.svg)](https://github.com/plata/ublue-surface/actions/workflows/build.yml)
 
-This is a starting point Fedora Silverblue image designed to be customized to whatever you want, have GitHub build it for you, and then host it for you. You then just tell your computer to boot off of that image. GitHub keeps 90 days worth image backups for you, thanks Microsoft!
+This is a constantly updating template repository for creating [a native container image](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) designed to be customized however you want. GitHub will build your image for you, and then host it for you on [ghcr.io](https://github.com/features/packages). You then just tell your computer to boot off of that image. GitHub keeps 90 days worth image backups for you, thanks Microsoft!
 
 For more info, check out the [uBlue homepage](https://ublue.it/) and the [main uBlue repo](https://github.com/ublue-os/main/)
 
@@ -29,6 +29,13 @@ If you want to add custom configuration files, you can just add them in the `etc
 ### Custom build scripts
 
 If you want to execute custom shell script or commands in the image build, you shouldn't edit `build.sh` or the `Containerfile` directly. Instead, you can create a shell script in the `scripts/` directory (look at the `example.sh`). After creating your script, enable it in the `scripts:` section of your `recipe.yml`.
+
+### Custom package repositories
+
+If you want to add custom package repositories to your image, you can include them in the `recipe.yml` as a list of URLs under the `extrarepos:` section. They **must** be proper `.repo` files (like `https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-37/atim-starship-fedora-37.repo`). In the build process, the `.repo` file will be downloaded and placed inside `/etc/yum.repos.d/` where rpm-ostree can access it.
+
+You can use this to add [COPR repositories](https://copr.fedorainfracloud.org/) to your image.
+COPR is like the Arch User Repository for Fedora, where you can find extra packages that wouldn't otherwise be available. The repositories are community-created, so use them at your own risk. [Read more](https://docs.pagure.org/copr.copr/user_documentation.html)
 
 ### Building multiple images
 
@@ -78,7 +85,7 @@ This repository builds date tags as well, so if you want to rebase to a particul
 sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/plata/ublue-surface:20230403
 ```
 
-The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `release.yml`, so you won't get accidentally updated to the next major version.
+The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
 
 ## Just
 
@@ -96,6 +103,7 @@ After that run the following commands:
   - `just distrobox-ubuntu`
 - `just setup-flatpaks` - Install all of the flatpaks declared in recipe.yml
 - `just setup-gaming` - Install Steam, Heroic Game Launcher, OBS Studio, Discord, Boatswain, Bottles, and ProtonUp-Qt. MangoHud is installed and enabled by default, hit right Shift-F12 to toggle
+- `just nix-me-up` - Install Nix with dnkmmr69420's Nix Silverblue install script
 - `just update` - Update rpm-ostree, flatpaks, and distroboxes in one command
 
 Check the [just website](https://just.systems) for tips on modifying and adding your own recipes.

@@ -16,7 +16,8 @@ description: A starting point for further customization of uBlue images. Make yo
 # These scripts will be executed during the container build
 # Place scripts in scripts/ and put the corresponding filename here
 scripts:
-#  - example.sh
+  - configure_sddm.sh
+  - install_convergent_windows.sh
 
 # a list of urls of .repo files that should be added to your system
 # this is the proper way to add copr repos to your image
@@ -29,16 +30,13 @@ extrarepos:
 rpms:
   # needed for yafti (the first boot installer) (remove if you're not using yafti)
   - python3-pip
+  - libadwaita # libadwaita comes with silverblue, but not with other flavors
   # add your own below
+  - plasma-mobile
 # These Flatpaks (from flathub) will be available for install on boot
 # this is just an example selection.
 # If you leave this empty you can use yafti for post-boot installation
 flatpaks:
+  - org.kde.qmlkonsole
   - org.mozilla.firefox
   - org.mozilla.Thunderbird
-  - com.mattjakeman.ExtensionManager
-  - org.libreoffice.LibreOffice
-  - org.gnome.DejaDup
-  - org.gustavoperedo.FontDownloader
-  - com.github.tchx84.Flatseal
-  - io.github.celluloid_player.Celluloid
