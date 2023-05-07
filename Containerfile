@@ -12,12 +12,6 @@ ARG RECIPE
 COPY etc /usr/etc
 COPY usr /usr
 
-# add Convergent Windows KWin script
-RUN cd /tmp && \
-    curl -o convergentwindows-v1.0.tar.gz -SL https://invent.kde.org/plata/convergentwindows/-/archive/v1.0/convergentwindows-v1.0.tar.gz && \
-    tar -xf convergentwindows-v1.0.tar.gz && \
-    mv convergentwindows-v1.0 /usr/share/kwin/scripts/convergentwindows
-
 # copy scripts
 RUN mkdir /tmp/scripts
 COPY scripts /tmp/scripts
