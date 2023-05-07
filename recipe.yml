@@ -19,6 +19,7 @@ scripts:
   - change_kernel.sh
   - configure_sddm.sh
   - install_convergent_windows.sh
+  - setup_waydroid.sh
 
 # a list of urls of .repo files that should be added to your system
 # this is the proper way to add copr repos to your image
