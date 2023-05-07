@@ -45,6 +45,7 @@ screens:
             - AudioTube: org.kde.audiotube
             - Clock: org.kde.kclock
             - Elisa: org.kde.elisa
+            - Kaidan: im.kaidan.kaidan
             - Kasts: org.kde.kasts
             - KDE Itinerary: org.kde.itinerary
             - Keysmith: org.kde.keysmith
