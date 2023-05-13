@@ -36,9 +36,7 @@ scripts:
     # Automatically runs script files within "scripts/post/".
     - autorun.sh
     # Manually listed scripts.
-    - configure_sddm.sh
-    - install_convergent_windows.sh
-    - setup_waydroid.sh
+    # - example_post.sh
 
 # Custom RPM configuration.
 # These changes will be integrated into your custom image at the "system level".
