@@ -36,7 +36,7 @@ scripts:
     # Automatically runs script files within "scripts/post/".
     - autorun.sh
     # Manually listed scripts.
-    # - example_pre.sh
+    # - example_post.sh
 
 # Custom RPM configuration.
 # These changes will be integrated into your custom image at the "system level".
