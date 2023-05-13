@@ -32,9 +32,10 @@ screens:
           description: Core applications
           default: true
           packages:
+            - Flatseal Permissions Manager: com.github.tchx84.Flatseal
             - Mozilla Firefox: org.mozilla.firefox
-            - Thunderbird Email: org.mozilla.Thunderbird
             - QMLKonsole: org.kde.qmlkonsole
+            - Thunderbird Email: org.mozilla.Thunderbird
         KDE:
           description: KDE applications
           default: false
