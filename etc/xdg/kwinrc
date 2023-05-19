@@ -3,7 +3,7 @@ NoPlugin=true
 ButtonsOnRight=
 
 [Plugins]
-convergentwindowsEnabled=false
+convergentwindowsEnabled=true
 
 [Wayland]
 InputMethod[$e]=/usr/share/applications/com.github.maliit.keyboard.desktop
