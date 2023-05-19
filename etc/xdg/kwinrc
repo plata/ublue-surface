@@ -1,4 +1,5 @@
 [org.kde.kdecoration2]
+NoPlugin=true
 ButtonsOnRight=
 
 [Plugins]
