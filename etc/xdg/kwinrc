@@ -1,6 +1,14 @@
+[org.kde.kdecoration2]
+NoPlugin=true
+ButtonsOnRight=
+
 [Plugins]
 convergentwindowsEnabled=true
 
 [Wayland]
 InputMethod[$e]=/usr/share/applications/com.github.maliit.keyboard.desktop
 VirtualKeyboardEnabled=true
+
+[Windows]
+BorderlessMaximizedWindows=true
+Placement=Maximizing
