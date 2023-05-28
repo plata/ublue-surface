@@ -8,6 +8,7 @@ cd surface-linux
 wget https://github.com/linux-surface/linux-surface/releases/download/silverblue-20201215-1/kernel-20201215-1.x86_64.rpm
 rpm-ostree override replace ./*.rpm \
            --remove kernel-core \
+           --remove kernel-devel-matched \
            --remove kernel-modules \
            --remove kernel-modules-extra \
            --remove libwacom \
