@@ -44,10 +44,10 @@ modules:
   - type: yafti # if included, yafti and it's dependencies (pip & libadwaita)
                 #  will be installed and set up
     custom-flatpaks: # this section is optional
-      - com.github.tchx84.Flatseal
-      - org.kde.qmlkonsole
-      - org.mozilla.firefox
-      - org.mozilla.Thunderbird
+      - Flatseal Permissions Manager: com.github.tchx84.Flatseal
+      - QMLKonsole: org.kde.qmlkonsole
+      - Mozilla Firefox: org.mozilla.firefox
+      - Thunderbird Email: org.mozilla.Thunderbird
 
   - type: script
     scripts:
