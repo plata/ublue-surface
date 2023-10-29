@@ -20,6 +20,7 @@ ARG RECIPE=recipe.yml
 # The default image registry to write to policy.json and cosign.yaml
 ARG IMAGE_REGISTRY=ghcr.io/ublue-os
 
+
 COPY cosign.pub /usr/share/ublue-os/cosign.pub
 
 # Copy the bling from ublue-os/bling into tmp, to be installed later by the bling module
