@@ -50,7 +50,7 @@ modules:
 
   - type: script
     scripts:
-      # - change_kernel.sh
+      - change_kernel.sh
       - configure_sddm.sh
       - install_convergent_windows.sh
       - setup_waydroid.sh
