@@ -10,7 +10,7 @@
 
 # !! Warning: changing these might not do anything for you. Read comment above.
 ARG IMAGE_MAJOR_VERSION=38
-ARG BASE_IMAGE_URL=ghcr.io/ublue-os/kinoite-main
+ARG BASE_IMAGE_URL=ghcr.io/ublue-os/kinoite-nokmods
 
 FROM ${BASE_IMAGE_URL}:${IMAGE_MAJOR_VERSION}
 
