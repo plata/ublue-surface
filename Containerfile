@@ -36,29 +36,6 @@ RUN wget https://pkg.surfacelinux.com/fedora/linux-surface.repo -P /etc/yum.repo
         --install libwacom-surface \
         --install libwacom-surface-data
 
-# Install akmods
-COPY --from=ghcr.io/ublue-os/akmods:surface-${FEDORA_MAJOR_VERSION} /rpms /tmp/akmods-rpms
-
-# Only run if FEDORA_MAJOR_VERSION is not 39
-RUN if [ ${FEDORA_MAJOR_VERSION} -lt 39 ]; then \
-    for REPO in $(rpm -ql ublue-os-akmods-addons|grep ^"/etc"|grep repo$); do \
-        echo "akmods: enable default entry: ${REPO}" && \
-        sed -i '0,/enabled=0/{s/enabled=0/enabled=1/}' ${REPO} \
-    ; done && \
-    rpm-ostree install \
-        kernel-tools \
-        /tmp/akmods-rpms/kmods/*xpadneo*.rpm \
-        /tmp/akmods-rpms/kmods/*xpad-noone*.rpm \
-        /tmp/akmods-rpms/kmods/*xone*.rpm \
-        /tmp/akmods-rpms/kmods/*openrazer*.rpm \
-        /tmp/akmods-rpms/kmods/*v4l2loopback*.rpm \
-        /tmp/akmods-rpms/kmods/*wl*.rpm && \
-    for REPO in $(rpm -ql ublue-os-akmods-addons|grep ^"/etc"|grep repo$); do \
-        echo "akmods: disable default entry: ${REPO}" && \
-        sed -i '1,/enabled=1/{s/enabled=1/enabled=0/}' ${REPO} \
-    ; done \
-; fi
-
 COPY cosign.pub /usr/share/ublue-os/cosign.pub
 
 # Copy the bling from ublue-os/bling into tmp, to be installed later by the bling module
