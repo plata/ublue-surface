@@ -2,7 +2,6 @@
 
 # Quickly initialize a Waydroid image
 init-waydroid:
-  #!/usr/bin/env bash
   sudo waydroid init -c 'https://ota.waydro.id/system' -v 'https://ota.waydro.id/vendor'
 
 # Remove all Waydroid-related files in your user folders
