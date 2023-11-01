@@ -53,6 +53,6 @@ modules:
       # - change_kernel.sh
       - configure_sddm.sh
       - install_convergent_windows.sh
-      - setup_waydroid.sh
+      # - setup_waydroid.sh
       # this sets up the proper policy & signing files for signed images to work
       - signing.sh
