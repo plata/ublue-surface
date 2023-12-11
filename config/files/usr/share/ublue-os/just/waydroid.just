@@ -1,5 +1,3 @@
-# vim: set ft=make :
-
 # Quickly initialize a Waydroid image
 init-waydroid:
     sudo waydroid init -c 'https://ota.waydro.id/system' -v 'https://ota.waydro.id/vendor'
