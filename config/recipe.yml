@@ -5,20 +5,17 @@ description: A uBlue image with Plasma Mobile for the Microsoft Surface Go.
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/kinoite-main
-image-version: 38 # latest is also supported if you want new updates ASAP
+image-version: 39 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
   - type: files
     files:
-      - usr: /usr # copy static configurations
-                  #
-                  # copies config/files/usr into your image's /usr
-                  #
-                  # configuration you wish to end up in /etc/ on the booted system
-                  # should be added into /usr/etc/ as that is the proper "distro"
-                  # config directory on ostree. Read more in the files module's README
+      - usr:
+          /usr # copies config/files/usr into your image's /usr.
+          # put configuration files you want in /etc/ on a booted system
+          # in /usr/etc/ in the image. read more in files module reference.
 
   - type: rpm-ostree
     repos:
@@ -29,29 +26,30 @@ modules:
       - firefox # default firefox removed in favor of flatpak
       - firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
 
-  - type: bling # configure what to pull in from ublue-os/bling
-    install:
-      - justfiles # add "!include /usr/share/ublue-os/just/bling.just"
-                  # in your custom.just (added by default) or local justfile
-      - nix-installer # shell shortcuts for determinate system's nix installers
-      - ublue-os-wallpapers
-      # - ublue-update # https://github.com/ublue-os/ublue-update
-      # - dconf-update-service # a service unit that updates the dconf db on boot
-      # - devpod # https://devpod.sh/ as an rpm
-
-
-  - type: yafti # if included, yafti and it's dependencies (pip & libadwaita)
-                #  will be installed and set up
-    custom-flatpaks: # this section is optional
-      - Flatseal Permissions Manager: com.github.tchx84.Flatseal
-      - QMLKonsole: org.kde.qmlkonsole
-      - Mozilla Firefox: org.mozilla.firefox
-      - Thunderbird Email: org.mozilla.Thunderbird
+  - type: default-flatpaks
+    notify: true # Send notification after install/uninstall is finished (true/false)
+    system:
+      # If no repo information is specified, Flathub will be used by default
+      # repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
+      # repo-name: flathub
+      # repo-title: "Flathub (system-wide)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
+      install:
+        - com.github.tchx84.Flatseal
+        - org.kde.qmlkonsole
+        - org.mozilla.firefox
+        - org.mozilla.Thunderbird
+      # Flatpak runtimes are not supported (like org.winehq.Wine//stable-23.08),
+      # only normal flatpak applications are (like Floorp Lightning web browser in this example).
+      # Installing different branches of the same Flatpak is not supported.
+      remove:
+      # - org.gnome.eog
 
   - type: script
     scripts:
+      # - change_kernel.sh
       - configure_sddm.sh
       - install_convergent_windows.sh
-      - setup_waydroid.sh
-      # this sets up the proper policy & signing files for signed images to work
-      - signing.sh
+      # - setup_waydroid.sh # installing Waydroid at build time causes issues with SELinux labels, see https://github.com/ublue-os/main/issues/223
+
+  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+
