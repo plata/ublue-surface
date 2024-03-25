@@ -12,13 +12,10 @@ image-version: 39 # latest is also supported if you want new updates ASAP
 modules:
   - type: files
     files:
-      - usr: /usr # copy static configurations
-                  #
-                  # copies config/files/usr into your image's /usr
-                  #
-                  # configuration you wish to end up in /etc/ on the booted system
-                  # should be added into /usr/etc/ as that is the proper "distro"
-                  # config directory on ostree. Read more in the files module's README
+      - usr:
+          /usr # copies config/files/usr into your image's /usr.
+          # put configuration files you want in /etc/ on a booted system
+          # in /usr/etc/ in the image. read more in files module reference.
 
   - type: rpm-ostree
     repos:
@@ -30,28 +27,22 @@ modules:
       - firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
 
   - type: default-flatpaks
-    notify: true   # Send notification after install/uninstall is finished (true/false)
+    notify: true # Send notification after install/uninstall is finished (true/false)
     system:
       # If no repo information is specified, Flathub will be used by default
-      repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
-      repo-name: flathub
+      # repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
+      # repo-name: flathub
       # repo-title: "Flathub (system-wide)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
       install:
         - com.github.tchx84.Flatseal
         - org.kde.qmlkonsole
         - org.mozilla.firefox
         - org.mozilla.Thunderbird
-      # Flatpak runtimes are not supported (like org.winehq.Wine//stable-23.08).
-      # Only normal flatpak applications are (like Floorp Lightning web browser in this example).
-      # Multiple install of same flatpaks with different branches is not supported.
+      # Flatpak runtimes are not supported (like org.winehq.Wine//stable-23.08),
+      # only normal flatpak applications are (like Floorp Lightning web browser in this example).
+      # Installing different branches of the same Flatpak is not supported.
       remove:
       # - org.gnome.eog
-      #
-    # A flatpak repo can also be added without having to install flatpaks,
-    # as long as one of the repo- fields is present
-    user:
-      repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
-      repo-name: flathub
 
   - type: script
     scripts:
@@ -59,5 +50,6 @@ modules:
       - configure_sddm.sh
       - install_convergent_windows.sh
       # - setup_waydroid.sh # installing Waydroid at build time causes issues with SELinux labels, see https://github.com/ublue-os/main/issues/223
-      # this sets up the proper policy & signing files for signed images to work
-      - signing.sh
+
+  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+
