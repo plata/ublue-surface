@@ -1,5 +1,0 @@
-ublue_variants:
-  - label: plata/ublue-surface
-    ks: /kickstart/ublue-os.ks
-    flavors:
-      - label: ublue-surface
