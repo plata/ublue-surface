@@ -12,10 +12,9 @@ image-version: 39 # latest is also supported if you want new updates ASAP
 modules:
   - type: files
     files:
-      - usr:
-          /usr # copies config/files/usr into your image's /usr.
-          # put configuration files you want in /etc/ on a booted system
-          # in /usr/etc/ in the image. read more in files module reference.
+      - usr: /usr # copies config/files/usr into your image's /usr.
+                  # put configuration files you want in /etc/ on a booted system 
+                  # in /usr/etc/ in the image. read more in files module reference.
 
   - type: rpm-ostree
     repos:
@@ -23,8 +22,10 @@ modules:
     install:
       - plasma-mobile
     remove:
-      - firefox # default firefox removed in favor of flatpak
-      - firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
+      # removing firefox (in favor of the flatpak)
+      # "firefox" is the main package, "firefox-langpacks" is a dependency
+      - firefox
+      - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
