@@ -48,7 +48,6 @@ modules:
   - type: script
     scripts:
       # - change_kernel.sh
-      - configure_sddm.sh
       - install_convergent_windows.sh
       # - setup_waydroid.sh # installing Waydroid at build time causes issues with SELinux labels, see https://github.com/ublue-os/main/issues/223
 
