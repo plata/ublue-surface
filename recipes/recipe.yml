@@ -1,6 +1,6 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-# image will be published to ghcr.io/<user>/<name>
+# image will be published to ghcr.io/plata/ublue-surface
 name: ublue-surface
 # description will be included in the image's metadata
 description: A uBlue image with Plasma Mobile for the Microsoft Surface Go.
