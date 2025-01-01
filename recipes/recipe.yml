@@ -18,7 +18,7 @@ modules:
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
   - type: rpm-ostree
-    repos:
+    # repos:
       # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
     install:
       - plasma-mobile
@@ -37,8 +37,8 @@ modules:
         - org.kde.qmlkonsole
         - org.mozilla.firefox
         - org.mozilla.Thunderbird
-      remove:
-      # - org.gnome.eog
+      # remove:
+        # - org.gnome.eog
     user: {} # Also add Flathub user repo, but no user packages
 
   - type: script
